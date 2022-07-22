@@ -1,0 +1,1 @@
+# Kastro_qa_guru_api_testing_diplom
