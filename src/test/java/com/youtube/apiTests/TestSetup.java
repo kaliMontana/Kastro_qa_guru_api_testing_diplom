@@ -6,8 +6,10 @@ import com.youtube.helpers.Attach;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.youtube.helpers.Helper.format;
 
 public class TestSetup {
 	private static WebDriverRemoteConfig config = ConfigFactory.create(WebDriverRemoteConfig.class);
@@ -26,9 +28,30 @@ public class TestSetup {
 
 	@BeforeAll
 	static void setup() {
-		Configuration.baseUrl = baseUrl;
-		Configuration.browserSize = browserSize;
-		Configuration.browser = browserName;
+		switch (System.getProperty("Launcher")) {
+			case "Local":
+				Configuration.baseUrl = baseUrl;
+				Configuration.browser = browserName;
+				Configuration.browserSize = browserSize;
+				break;
+			case "Remote":
+				Configuration.baseUrl = baseUrl;
+				Configuration.browser = browserName;
+				Configuration.browserSize = browserSize;
+				Configuration.remote = format("https://{}:{}@{}",
+						config.getSelenoidUserName(),
+						config.getSelenoidPassword(),
+						config.getRemoteUrl()
+				);
+
+				DesiredCapabilities capabilities = new DesiredCapabilities();
+				capabilities.setCapability("enableVNC", true);
+				capabilities.setCapability("enableVideo", true);
+				Configuration.browserCapabilities = capabilities;
+				break;
+			default:
+				throw new RuntimeException("No such environment");
+		}
 	}
 
 	@AfterEach

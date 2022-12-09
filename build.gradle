@@ -24,7 +24,7 @@ def allureVersion = "2.17.3",
     lombokVersion = "1.18.24",
     restAssuredVersion = "5.1.1"
 
-    dependencies {
+dependencies {
     testImplementation(
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "com.codeborne:selenide:$selenideVersion",
@@ -58,15 +58,9 @@ tasks.withType(Test) {
     systemProperties(System.getProperties())
 
     useJUnitPlatform() {
-        if (System.getProperty("testTag").equals("Search")) {
-            includeTags "Search"
-        } else if (System.getProperty("testTag").equals("Open")) {
-            includeTags "Open"
-        } else if (System.getProperty("testTag").equals("ShortVideos")) {
-            includeTags "ShortVideos"
-        } else if (System.getProperty("testTag").equals("HeaderTabs")) {
-            includeTags "HeaderTabs"
-        } else if (System.getProperty("testTag").equals("AllTests")) {
+        if (System.getProperty("testTag").equals("api")) {
+            includeTags "api"
+        } else {
             includeTags "AllTests"
         }
     }

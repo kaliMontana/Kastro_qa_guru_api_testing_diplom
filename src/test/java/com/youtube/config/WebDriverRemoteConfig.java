@@ -37,4 +37,13 @@ public interface WebDriverRemoteConfig extends Config {
 
 	@Key("api.video.id")
 	String getApiVideoId();
+
+	@Key("selenoid.username")
+	String getSelenoidUserName();
+
+	@Key("selenoid.password")
+	String getSelenoidPassword();
+
+	@Key("remote.url")
+	String getRemoteUrl();
 }
