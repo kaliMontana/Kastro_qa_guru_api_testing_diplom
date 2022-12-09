@@ -2,6 +2,7 @@ package com.youtube.Pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.youtube.helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
@@ -19,7 +20,10 @@ public class WatchPage {
 
 	@Step("Get video title")
 	public String getVideoTitle() {
-		return itemTitleElement.shouldBe(visible, Duration.ofSeconds(EIGHT_SEC.getValue())).getText();
+		String title = itemTitleElement.shouldBe(visible, Duration.ofSeconds(EIGHT_SEC.getValue())).getText();
+		Attach.attachAsText("Title", title);
+
+		return title;
 	}
 
 	@Step("Get channel title")

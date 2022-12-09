@@ -9,44 +9,13 @@ import java.util.Map;
 import static com.youtube.api.steps.BaseApiSteps.getRequestSpecifications;
 import static com.youtube.api.steps.apiResponseSteps.getVideoInformation;
 import static com.youtube.apiTests.TestSetup.*;
+import static com.youtube.helpers.Attach.attachToAllureJsonPathResponse;
 import static com.youtube.helpers.Helper.format;
 import static com.youtube.helpers.api.GetRequest.doHttpGetRequest;
 
 public class FeatureApiSteps {
 	private final String videoInformationQuery = "{}?part={}&id={}&key={}";
 
-
-	/*@Step
-	@DisplayName("Api query to 'Search' feature")
-	public void searchQueryStep() {
-		String query = format("{}{}?part={}&maxResults={}&q={}&type={}&key={}",
-				apiBaseUrl + apiBasePath,
-				apiServiceSearch,
-				apiPart,
-				maxResults,
-				qSearch,
-				apiType,
-				apiKey
-		);
-
-		JsonPath jsonPath = given()
-				.log().uri()
-				//.log().body()
-				.contentType(ContentType.JSON)
-				.when()
-				.get(query)
-				.then()
-				.log().status()
-				//.log().body()
-				.statusCode(200)
-				.extract().response().getBody().jsonPath();
-
-		ItemsItem[] itemsItem = jsonPath.getObject("items", ItemsItem[].class);
-
-		for (ItemsItem title : itemsItem) {
-			System.out.println(title.getSnippet().getTitle());
-		}
-	}*/
 
 	@Step("Get video information by api query")
 	public Map<String, String> callGetVideoInformationApiStep() {
@@ -56,6 +25,8 @@ public class FeatureApiSteps {
 				getRequestSpecifications(),
 				query
 		);
+
+		attachToAllureJsonPathResponse(apiBaseUrl + apiBasePath + query, jsonPath);
 
 		return getVideoInformation(jsonPath);
 	}
