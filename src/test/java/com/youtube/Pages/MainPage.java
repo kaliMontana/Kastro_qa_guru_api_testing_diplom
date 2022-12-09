@@ -12,16 +12,13 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Selenide.*;
+import static com.youtube.apiTests.TestSetup.searchedWord;
 import static com.youtube.helpers.Waiting.SIX_SEC;
 
 public class MainPage {
 	private final SelenideElement searchInputElement = $("#search-input");
 	private final SelenideElement searchElement = $("#search");
 	private final ElementsCollection itemListElement = $$(".sbse");
-
-
-	private static final String RESULT_PATH = "/results?search_query=appium";
-	private static final String SEARCHED_WORD = "Appium";
 
 
 	@Step("Open main site")
@@ -32,7 +29,7 @@ public class MainPage {
 	@Step("Search 'Appium'")
 	public void searchStep() {
 		searchInputElement.shouldBe(enabled, Duration.ofSeconds(SIX_SEC.getValue())).click();
-		searchInputElement.find(By.id("search")).setValue(SEARCHED_WORD);
+		searchInputElement.find(By.id("search")).setValue(searchedWord);
 	}
 
 	@Step("Check the searched word in the result pop-up list")
@@ -43,13 +40,13 @@ public class MainPage {
 
 		itemListElement.forEach(x -> softAssertions.assertThat(x.getText())
 				.as("Result element does not contains searched word")
-				.containsIgnoringCase(SEARCHED_WORD));
+				.containsIgnoringCase(searchedWord));
 
 		softAssertions.assertAll();
 	}
 
 	@Step("Click on first word in the result pop-up list")
 	public void clickOnFirstResultFromList() {
-		itemListElement.first().shouldHave(Condition.text(SEARCHED_WORD)).click();
+		itemListElement.first().shouldHave(Condition.text(searchedWord)).click();
 	}
 }

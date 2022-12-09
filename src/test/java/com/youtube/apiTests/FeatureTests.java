@@ -4,6 +4,7 @@ import com.youtube.Pages.MainPage;
 import com.youtube.Pages.ResultPage;
 import com.youtube.Pages.WatchPage;
 import com.youtube.api.steps.FeatureApiSteps;
+import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Tag;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 
 @Owner("Kastro B.")
+@Link("https://youtube.com")
 @Story("Api and frontend Youtube video information")
 public class FeatureTests extends TestSetup {
 	FeatureApiSteps featurePages = new FeatureApiSteps();

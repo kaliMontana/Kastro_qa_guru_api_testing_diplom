@@ -26,23 +26,14 @@ public interface WebDriverRemoteConfig extends Config {
 	@Key("api.key")
 	String getApiKey();
 
-	@Key("api.service.search")
-	String getApiServiceSearch();
-
 	@Key("api.service.videos")
 	String getApiServiceVideos();
 
 	@Key("api.part")
 	String getApiPart();
 
-	@Key("maxResults")
-	String getApiMaxResults();
-
 	@Key("api.word.to.search")
 	String getApiWordToSearch();
-
-	@Key("api.type")
-	String getApiType();
 
 	@Key("api.video.id")
 	String getApiVideoId();
