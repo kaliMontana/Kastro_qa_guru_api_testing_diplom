@@ -18,7 +18,7 @@ public class Attach {
 	private static final String TEXT_PLAIN_TYPE = "text/plain";
 	private static final String TEXT_HTML_TYPE = "text/html";
 	private static final String TEXT_JSON_TYPE = "text/json";
-	private static final String IMG_PNG_TYPE = "image/png";
+	private static final String IMAGE_PNG_TYPE = "image/png";
 	private static final String APPLICATION_JSON_TYPE = "application/json";
 
 
@@ -32,7 +32,7 @@ public class Attach {
 		return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
 	}
 
-	@Attachment(value = "{attachName}", type = IMG_PNG_TYPE)
+	@Attachment(value = "{attachName}", type = IMAGE_PNG_TYPE)
 	public static byte[] screenshotAs(String attachName) {
 		return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
 	}
