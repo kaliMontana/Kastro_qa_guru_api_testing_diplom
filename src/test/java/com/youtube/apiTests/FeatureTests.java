@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-@Owner("Kastro B.")
 @Tag("AllTests")
+@Owner("Kastro B.")
 @Link("https://youtube.com")
 @Story("Api and frontend Youtube video information")
 public class FeatureTests extends TestSetup {
