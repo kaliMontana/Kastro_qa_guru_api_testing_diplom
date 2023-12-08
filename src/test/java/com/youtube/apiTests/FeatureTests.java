@@ -1,5 +1,6 @@
 package com.youtube.apiTests;
 
+import com.youtube.Pages.BeforeYouContinuePage;
 import com.youtube.Pages.MainPage;
 import com.youtube.Pages.ResultPage;
 import com.youtube.Pages.WatchPage;
@@ -21,6 +22,7 @@ public class FeatureTests extends TestSetup {
 	MainPage mainPage = new MainPage();
 	ResultPage resultPage = new ResultPage();
 	WatchPage watchPage = new WatchPage();
+	BeforeYouContinuePage beforeYouContinuePage = new BeforeYouContinuePage();
 
 
 	@Test
@@ -29,6 +31,9 @@ public class FeatureTests extends TestSetup {
 		Map<String, String> VideoInformationResponse = featurePages.callGetVideoInformationApiStep();
 
 		mainPage.openMainPageStep();
+
+		beforeYouContinuePage.clickOnRejectAllStep();
+
 		mainPage.searchStep();
 		mainPage.checkExistenceWordInResultStep();
 		mainPage.clickOnFirstResultFromList();
