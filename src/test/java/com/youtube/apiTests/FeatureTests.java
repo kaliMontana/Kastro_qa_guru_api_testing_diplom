@@ -18,7 +18,7 @@ import java.util.Map;
 @Link("https://youtube.com")
 @Story("Api and frontend Youtube video information")
 public class FeatureTests extends TestSetup {
-	FeatureApiSteps featurePages = new FeatureApiSteps();
+	FeatureApiSteps apiVideoInformation = new FeatureApiSteps();
 	MainPage mainPage = new MainPage();
 	ResultPage resultPage = new ResultPage();
 	WatchPage watchPage = new WatchPage();
@@ -28,7 +28,7 @@ public class FeatureTests extends TestSetup {
 	@Test
 	@Tag("api")
 	public void videoInformationTest() {
-		Map<String, String> VideoInformationResponse = featurePages.callGetVideoInformationApiStep();
+		Map<String, String> VideoInformationResponse = apiVideoInformation.callGetVideoInformationApiStep();
 
 		mainPage.openMainPageStep();
 
@@ -46,7 +46,7 @@ public class FeatureTests extends TestSetup {
 		String descriptionFromSite = watchPage.getDescription();
 		String videoIdFromSite = watchPage.getVideoId();
 
-		featurePages.checkInformation(
+		apiVideoInformation.checkInformation(
 				VideoInformationResponse,
 				videoTitleFromSite,
 				channelTitleFromSite,
