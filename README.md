@@ -64,7 +64,7 @@ After the run is completed, notifications are sent using the bot in Telegram.
 
 #### After passing the tests, the result is displayed in Allure Report
 
-## <img width="6%" title="Allure" src="images/logo/Allure_Report.svg"> Example of Allure Report
+## <img width="6%" title="Allure" src="images/logos/Allure_Report.svg"> Example of Allure Report
 
 ## Allure report for each UI test includes a screenshot, log, html page and a video of the test being passing
 
