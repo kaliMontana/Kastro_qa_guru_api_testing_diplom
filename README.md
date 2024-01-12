@@ -47,3 +47,25 @@ After the run is completed, notifications are sent using the bot in Telegram.
 
 ## Implemented tests
 - [x] Checking that the video information in the UI is the same as the information obtained through the request API
+
+## Starting test
+<details>
+<summary>Starting test from Idea console</summary>
+
+### Starting tests Locally
+
+* ```gradle clean test -DtestTag=${TAGTEST} -DLauncher=Local allureServe```
+* ```gradle clean test -DtestTag=api -DLauncher=Local allureServe```
+
+### Starting tests remotely in Selenoid
+* ```gradle clean test -DtestTag=${TAGTEST} -DLauncher=Remote allureServe```
+* ```gradle clean test -DtestTag=api -DLauncher=Remote```
+</details>
+
+#### After passing the tests, the result is displayed in Allure Report
+
+## <img width="6%" title="Allure" src="images/logo/Allure_Report.svg"> Example of Allure Report
+
+## Allure report for each UI test includes a screenshot, log, html page and a video of the test being passing
+
+<p><img src="images/screenshots/allure_report.png" alt="allure report"/></p>
