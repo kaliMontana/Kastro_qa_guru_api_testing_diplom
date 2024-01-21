@@ -58,10 +58,6 @@ tasks.withType(Test) {
     systemProperties(System.getProperties())
 
     useJUnitPlatform() {
-        if (System.getProperty("testTag").equals("api")) {
-            includeTags "api"
-        } else {
-            includeTags "AllTests"
-        }
+        includeTags "api"
     }
 }

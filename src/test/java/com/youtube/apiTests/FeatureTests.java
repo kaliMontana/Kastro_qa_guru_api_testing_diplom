@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-@Tag("AllTests")
 @Owner("Kastro B.")
 @Link("https://youtube.com")
 @Story("Api and frontend Youtube video information")
